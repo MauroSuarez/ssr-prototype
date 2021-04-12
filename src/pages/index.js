@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Counter } from '../features/counter/Counter'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 export default function Home() {
   return (
@@ -57,8 +57,8 @@ export default function Home() {
   )
 }
 
-Home.getInitialProps = async (ctx) => {
+/*Home.getInitialProps = async (ctx) => {
   // Capture vars .env
   //console.log(process.env.REACT_APP_DROP_CONSOLE, 'counter');
-  return {  }
-}
+  //return {  }
+}*/
