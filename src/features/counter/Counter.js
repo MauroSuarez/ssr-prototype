@@ -78,7 +78,7 @@ export function Counter() {
   )
 }
 
-Counter.getInitialProps = async (ctx) => {
-  console.log(process.env.NEXT_PUBLIC_APP_DROP_CONSOLE, 'counter');
+Counter.getStaticProps = async (ctx) => {
+  console.log(process.env.NEXT_PUBLIC_APP_DROP_CONSOLE, 'dfasdfasdfcounter');
   return {  }
 }
