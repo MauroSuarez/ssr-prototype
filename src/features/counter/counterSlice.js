@@ -42,6 +42,22 @@ export const incrementAsync = (amount) => (dispatch) => {
   }, 1000)*/
 }
 
+/*
+// Method use async dispatch
+export const login2 = ({ username, password }) => async dispatch => {
+  try {
+    dispatch(loginRequest())
+    dropConsole({ type: 'warn', message: 'login RQ >> ', data: { username, password } })
+    let result = await getUserDetails1(1).then(res => res);
+    dropConsole({ type: 'warn', message: 'login RES >> ', data: result })
+    dispatch(loginSuccess({ username, password, isLoading: false }));
+  } catch (e) {
+    dropConsole({ type: 'error', message: 'login >> ' + e.message, data: { username, password } })
+    return console.error(e.message);
+  }
+}
+*/
+
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
