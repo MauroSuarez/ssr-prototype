@@ -58,6 +58,7 @@ export default function Home() {
 }
 
 Home.getInitialProps = async (ctx) => {
-  console.log("TTADSFASDF")
+  // Capture vars .env
+  //console.log(process.env.REACT_APP_DROP_CONSOLE, 'counter');
   return {  }
 }

@@ -13,7 +13,8 @@ import styles from './Counter.module.css'
 export function Counter() {
   const counter = useSelector(countSelector);
   useEffect(() => {
-    console.log(counter, 'counter');
+    // capture vars .env public
+    console.log(process.env.NEXT_PUBLIC_APP_DROP_CONSOLE, 'counter');
   });
   const count = useSelector(selectCount)
   const dispatch = useDispatch()
@@ -62,4 +63,9 @@ export function Counter() {
       </div>
     </div>
   )
+}
+
+Counter.getInitialProps = async (ctx) => {
+  console.log(process.env.NEXT_PUBLIC_APP_DROP_CONSOLE, 'counter');
+  return {  }
 }
