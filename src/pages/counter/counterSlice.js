@@ -2,13 +2,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { initialState, counterReducer } from './reducer'
 
 // First, create the thunk
-const fetchUserById = createAsyncThunk('users/fetchByIdStatus', async (UserId, thunkAPI) => {
+const fetchUserById = createAsyncThunk('users/fetchByIdStatus', async (amount, thunkAPI) => {
   //const response = await getUserDetails1(1).then(res => res);
-  console.log("desde tunk");
-  setTimeout(() => {
-    
-  }, 1000)
-  return true;//response;
+  return amount;//response;
 })
 
 export const counterSlice = createSlice({
@@ -16,15 +12,26 @@ export const counterSlice = createSlice({
   initialState,
   reducers: counterReducer,
   extraReducers: {
-    [fetchUserById.pending]: (state, action) => {
+    [fetchUserById.pending]: (state, { meta }) => {
+      state.currentRequestId = meta.requestId;
       // Add user to the state array
-      console.log(state, action, 'pending')
+      //console.log(state, action, 'pending')
+      //state.value = '....Cargando';
     },
     // Add reducers for additional action types here, and handle loading state as needed
-    [fetchUserById.fulfilled]: (state, action) => {
+    [fetchUserById.fulfilled]: (state, { meta, payload, error }) => {
       // Add user to the state array
-      console.log(state, action)
-    }
+      console.log(state.currentRequestId, meta.requestId, 'ACTION')
+      state.value += payload
+    },
+    [fetchUserById.rejected]: (state, { meta, payload, error }) => {
+      if (meta.requestId === state.currentRequestId.requestId) {
+        state.currentRequestId = meta;
+        state.loading = "fin";
+        state.todoList = payload;
+        state.error = error;
+      }
+    },
   }
 })
 
@@ -35,8 +42,12 @@ export const countSelector = (state) => state.counter
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
-export const incrementAsync = (amount) => (dispatch) => {
-  dispatch(fetchUserById(12))
+export const incrementAsync = (amount) => dispatch => {
+  setTimeout(() => {
+    //dispatch(incrementByAmount(amount))
+    dispatch(fetchUserById(amount))
+  }, 6000)
+  //dispatch(incrementByAmount(amount))
   /*setTimeout(() => {
     dispatch(incrementByAmount(amount))
   }, 1000)*/

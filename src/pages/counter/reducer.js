@@ -1,5 +1,6 @@
 export const initialState = {
   value: 0,
+  currentRequestId: "",
 }
 
 export const counterReducer = {
