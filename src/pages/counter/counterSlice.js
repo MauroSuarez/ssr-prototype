@@ -46,7 +46,7 @@ export const incrementAsync = (amount) => dispatch => {
   setTimeout(() => {
     //dispatch(incrementByAmount(amount))
     dispatch(fetchUserById(amount))
-  }, 6000)
+  }, 2000)
   //dispatch(incrementByAmount(amount))
   /*setTimeout(() => {
     dispatch(incrementByAmount(amount))

@@ -2,6 +2,7 @@ import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 //import '../styles/globals.css'
 import '../../styles/tailwind.css'
+//import 'antd/dist/antd.css'
 
 const MyApp = ({ Component, pageProps }) => {
   return (

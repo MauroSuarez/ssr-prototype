@@ -3,7 +3,6 @@ import { Counter } from './counter/Counter'
 import styles from '../../styles/Home.module.css'
 
 export default function Home({ data }) {
-  console.log(data, '¡DATAAA');
   return (
     <div>
     <nav className="bg-gray-800">
